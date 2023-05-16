@@ -26,16 +26,29 @@ FROM
 SELECT
 	d.dept_no
 	,d.dept_name
-	,de.emp_no
+	,dm.emp_no
 	,e.last_name
 	,e.first_name
 FROM
-	departments as d
-	inner join dept_emp as de on de.dept_no = d.dept_no
-	inner join employees as e on e.emp_no = de.emp_no
+	departments AS d
+	INNER JOIN dept_manager AS dm ON dm.dept_no = d.dept_no
+	INNER JOIN employees AS e ON e.emp_no = dm.emp_no
 ;
 
+/* Question 4 List the department number for each employee along with that employee’s employee number, last name, first name, and department name. */
+SELECT
+	d.dept_no
+	,de.emp_no
+	,e.last_name
+	,e.first_name
+	,d.dept_name
+FROM
+	departments AS d
+	INNER JOIN dept_emp AS de ON de.dept_no = d.dept_no
+	INNER JOIN employees AS e ON e.emp_no = de.emp_no
+;
 
+/* Question 5 List first name, last name, and sex of each employee whose first name is Hercules and whose last name begins with the letter B. */
 
 
 
